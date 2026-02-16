@@ -1,10 +1,11 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import UploadZone from "@/components/UploadZone";
 import ResultCard from "@/components/ResultCard";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useLocale } from "@/lib/LocaleContext";
+import { canScan, recordScan, getRemainingScans } from "@/lib/usageLimit";
 
 type Status = "idle" | "uploaded" | "loading" | "done" | "error";
 
@@ -15,6 +16,10 @@ export default function Home() {
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [remaining, setRemaining] = useState(3);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+
+  useEffect(() => { setRemaining(getRemainingScans()); }, []);
 
   const handleFileSelect = useCallback((f: File) => {
     setFile(f); setPreview(URL.createObjectURL(f)); setStatus("uploaded"); setResult(""); setError("");
@@ -27,6 +32,7 @@ export default function Home() {
 
   const handleAnalyze = useCallback(async () => {
     if (!file) return;
+    if (!canScan()) { setShowLimitModal(true); return; }
     setStatus("loading"); setError("");
     try {
       const formData = new FormData();
@@ -34,6 +40,8 @@ export default function Home() {
       const res = await fetch("/api/analyze", { method: "POST", body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Conversion failed.");
+      recordScan();
+      setRemaining(getRemainingScans());
       setResult(data.result); setStatus("done");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "An unexpected error occurred.";
@@ -118,6 +126,12 @@ export default function Home() {
                 className="rainbow-border w-full rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/25 transition-all hover:shadow-2xl hover:shadow-blue-600/35 hover:-translate-y-0.5 active:scale-[0.98]">
                 {t.analyze.button}
               </button>
+            )}
+
+            {status === "uploaded" && (
+              <p className="text-center text-xs text-slate-400">
+                {remaining}/3 {t.limit.remaining}
+              </p>
             )}
 
             {status === "loading" && (
@@ -284,6 +298,23 @@ export default function Home() {
           </span>
         </p>
       </footer>
+
+      {/* ===== Daily Limit Modal ===== */}
+      {showLimitModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in-up">
+          <div className="glass mx-4 max-w-md rounded-3xl p-8 text-center shadow-2xl">
+            <div className="mb-4 text-5xl">🚫</div>
+            <h3 className="mb-2 text-xl font-bold text-foreground">{t.limit.title}</h3>
+            <p className="mb-6 text-sm text-muted">{t.limit.message}</p>
+            <button className="w-full rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-600/25 transition-all hover:shadow-xl hover:-translate-y-0.5">
+              {t.limit.upgrade}
+            </button>
+            <button onClick={() => setShowLimitModal(false)} className="mt-3 w-full rounded-2xl py-2.5 text-sm text-muted hover:text-foreground transition-colors">
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
