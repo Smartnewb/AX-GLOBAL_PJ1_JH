@@ -113,6 +113,11 @@ body::before {
   border-radius: 8px;
 }
 
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
 /* Rainbow border */
 @keyframes rainbow-rotate {
   0% {

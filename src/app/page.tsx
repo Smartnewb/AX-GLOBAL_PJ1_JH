@@ -63,7 +63,7 @@ export default function Home() {
               </svg>
             </div>
             <span className="text-lg font-black tracking-tighter text-foreground">
-              MemoFlow<span className="text-accent"> AI</span>
+              Mezmo <span className="text-accent">Change</span>
             </span>
           </div>
 
@@ -123,8 +123,14 @@ export default function Home() {
 
             {(status === "uploaded" || status === "error") && (
               <button onClick={handleAnalyze}
-                className="rainbow-border w-full rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/25 transition-all hover:shadow-2xl hover:shadow-blue-600/35 hover:-translate-y-0.5 active:scale-[0.98]">
-                {t.analyze.button}
+                className="group rainbow-border w-full rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 py-4 text-base font-bold text-white shadow-xl shadow-blue-600/25 transition-all hover:shadow-2xl hover:shadow-blue-600/35 hover:-translate-y-0.5 active:scale-[0.98]">
+                <span className="inline-flex items-center gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="transition-transform duration-500 group-hover:rotate-180">
+                    <path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t.analyze.button}
+                </span>
               </button>
             )}
 
@@ -135,8 +141,15 @@ export default function Home() {
             )}
 
             {status === "loading" && (
-              <button disabled className="w-full rounded-2xl bg-silver-200 py-4 text-base font-bold text-slate-400 cursor-not-allowed">
-                {t.analyze.analyzing}
+              <button disabled className="w-full rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 py-4 text-base font-bold text-white cursor-wait overflow-hidden relative">
+                <span className="inline-flex items-center gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="animate-spin">
+                    <path d="M23 4v6h-6M1 20v-6h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t.analyze.analyzing}
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" />
               </button>
             )}
 

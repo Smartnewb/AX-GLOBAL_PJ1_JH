@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MemoFlow AI — Turn Messy Notes into Clean Documents",
+  title: "Mezmo Change — Change your scribbles into smart notes in 5 seconds",
   description:
-    "Snap a photo of your handwritten notes. Our AI reads your handwriting, understands context, and transforms it into perfectly structured digital text — in any language.",
+    "Mezmo Change는 AI 손글씨 구조화 서비스입니다. 사진 한 장으로 엉망인 메모를 5초 만에 깔끔한 디지털 노트로 변환합니다.",
 };
 
 export default function RootLayout({

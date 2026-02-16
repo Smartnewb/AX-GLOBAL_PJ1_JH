@@ -48,14 +48,14 @@ export default function ResultCard({ result, isLoading }: ResultCardProps) {
         const blob = new Blob([result], { type: "text/plain;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a"); a.href = url;
-        a.download = `MemoFlow_${new Date().toISOString().slice(0, 10)}.txt`;
+        a.download = `MezmoChange_${new Date().toISOString().slice(0, 10)}.txt`;
         a.click(); URL.revokeObjectURL(url);
     };
 
     const handleDownloadPdf = () => {
         const win = window.open("", "_blank");
         if (!win) return;
-        win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>MemoFlow</title>
+        win.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Mezmo Change</title>
       <style>body{font-family:-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;max-width:700px;margin:40px auto;padding:0 20px;color:#1a1a1a;line-height:1.7}h2{margin-top:28px;font-size:18px}ul,ol{padding-left:24px}li{margin-bottom:6px}</style></head>
       <body>${markdownToHtml(result)}</body></html>`);
         win.document.close(); setTimeout(() => { win.print(); }, 400);
