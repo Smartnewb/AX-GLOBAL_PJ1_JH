@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mezmo Change
 
-## Getting Started
+> "Change your scribbles into smart notes in 5 seconds."
 
-First, run the development server:
+**Mezmo Change** is an AI-powered handwriting analysis tool that transforms messy notes into structured, actionable digital documents in seconds.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Handwriting Correction**: Context-aware analysis to restore illegible handwriting.
+- **Smart Structure**: Automatically organizes content into **Summary**, **Action Items**, and **Key Notes**.
+- **Super Fast**: detailed analysis in ~3-5 seconds.
+- **Multilingual**: Supports 15+ languages including Korean, English, Japanese, etc.
+- **Privacy First**: "Zero Data Storage" policy. Your notes are processed and immediately discarded.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS
+- **Design**: Glassmorphism UI, culturally neutral mesh gradients
+- **AI**: Google Gemini 2.0 Flash (via Google Generative AI SDK)
+- **Deployment**: Vercel
 
-## Learn More
+## 🚀 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/mezmo-change.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Set up environment variables:
+   Create a `.env.local` file and add your Gemini API key:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
 
-## Deploy on Vercel
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Security
+
+- **No Data Storage**: We do not store any images or text processed by the service.
+- **SSL Encryption**: All data is transmitted securely via SSL.
+
+## 📄 License
+
+This project is licensed under the MIT License.

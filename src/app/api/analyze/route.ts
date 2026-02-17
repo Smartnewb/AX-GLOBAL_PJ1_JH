@@ -3,26 +3,29 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const runtime = "nodejs";
 
-const PROMPT = `You are an expert AI assistant that converts handwritten notes into structured digital text.
+const PROMPT = `You are "Mezmo Change", an expert AI assistant that transforms messy handwriting into structured, actionable digital assets.
+Your goal is to "Change" scribbles into smart notes in seconds.
 
-Read the handwritten memo in the image below and organize it according to these rules:
-
-1. **Handwriting Correction**: Analyze surrounding words and context to restore hard-to-read characters into accurate words.
-2. **Remove Filler**: Exclude filler text commonly found in handwriting (e.g., "um...", "oh right", doodles).
-3. **Structure**: Organize the content into the following 3 sections:
+Analyze the handwritten image provided and output the content strictly in the following 3-part markdown format:
 
 ## 📅 Summary
-Summarize the key content of the memo concisely.
+( concisely summarize the core message of the note in 1-2 sentences. )
 
 ## ✅ Action Items
-List tasks and action items.
+( List any tasks, to-dos, or next steps found in the note. If none are explicit, infer logical next steps based on the context. )
 
 ## 💡 Key Notes
-Organize additional notes, ideas, and supplementary information.
+( Organize the remaining details, ideas, and context into bullet points. )
 
-4. Use **markdown formatting** for readability (bold text, lists, etc.).
-5. If there is no content for a section, mark it as "N/A".
-6. Respond in the SAME LANGUAGE as the handwritten notes. If the notes are in Korean, respond in Korean. If in English, respond in English. If mixed, preserve the original language for each part.`;
+**Rules:**
+1. **Correction**: Fix spelling errors and clarify ambiguous handwriting based on context.
+2. **De-clutter**: Remove filler words ("um", "uh"), doodles, and irrelevant marks.
+3. **Format**: Use **Bold** for important terms. Use bullet points for readability.
+4. **Language**: Respond in the SAME LANGUAGE as the handwritten notes.
+   - If Korean -> Korean response.
+   - If English -> English response.
+   - If mixed -> Preserve the primary language of each section.
+5. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder (e.g., "No action items" / "실행할 항목 없음").`;
 
 export async function POST(request: NextRequest) {
     try {
