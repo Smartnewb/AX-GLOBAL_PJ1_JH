@@ -35,7 +35,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── English ───
     en: {
         nav: { noDataStored: "No data stored", sslEncrypted: "SSL Encrypted", upgrade: "Upgrade" },
-        hero: { title: "Change your scribbles into\nsmart notes in 5 seconds.", subtitle: "Snap a photo of your messy notes — Mezmo AI transforms them into clean, actionable documents.\nWorks with any language, any handwriting." },
+        hero: { title: "Change your scribbles into\nsmart notes in 5 seconds.", subtitle: "Snap a photo of your messy notes — Mezmo Change transforms them into clean, actionable documents.\nWorks with any language, any handwriting." },
         upload: { heading: "📸 Upload Image", cameraSupported: "Camera supported", dropHere: "Drop your note photo here", orClickToBrowse: "or click to browse files", fileTypes: "JPG · PNG · HEIC", maxSize: "Max 10 MB", change: "Change", imageOnly: "Only image files are supported.", fileTooLarge: "File size must be under 10 MB." },
         analyze: { button: "🔄 Change with AI", analyzing: "Changing...", error: "⚠️ Error:" },
         stats: { avgTime: "~3s", avgLabel: "Avg. analysis", anyLang: "🌏", anyLangLabel: "Any language", export: "📤", exportLabel: "Copy · TXT · PDF" },
@@ -48,7 +48,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── 한국어 ───
     ko: {
         nav: { noDataStored: "데이터 저장 없음", sslEncrypted: "SSL 암호화", upgrade: "업그레이드" },
-        hero: { title: "휘갈긴 메모를\n5초 만에 스마트 노트로.", subtitle: "메모 사진 한 장이면, Mezmo AI가 깔끔한 디지털 문서로 바꿔 드립니다.\n어떤 언어, 어떤 글씨체든 상관없습니다." },
+        hero: { title: "휘갈긴 메모를\n5초 만에 스마트 노트로.", subtitle: "메모 사진 한 장이면, Mezmo Change가 깔끔한 디지털 문서로 바꿔 드립니다.\n어떤 언어, 어떤 글씨체든 상관없습니다." },
         upload: { heading: "📸 이미지 업로드", cameraSupported: "카메라 지원", dropHere: "메모 사진을 올려주세요", orClickToBrowse: "또는 클릭하여 파일 선택", fileTypes: "JPG · PNG · HEIC", maxSize: "최대 10MB", change: "다시 선택", imageOnly: "이미지 파일만 업로드할 수 있습니다.", fileTooLarge: "파일 크기는 10MB 이하만 가능합니다." },
         analyze: { button: "🔄 AI로 Change 하기", analyzing: "변환 중...", error: "⚠️ 오류:" },
         stats: { avgTime: "~3초", avgLabel: "평균 분석 시간", anyLang: "🌏", anyLangLabel: "모든 언어 지원", export: "📤", exportLabel: "복사 · TXT · PDF" },
@@ -61,7 +61,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── 日本語 ───
     ja: {
         nav: { noDataStored: "データ保存なし", sslEncrypted: "SSL暗号化", upgrade: "アップグレード" },
-        hero: { title: "あなたの手書きメモ、\nもっときれいにできます。", subtitle: "メモの写真を撮るだけ。AIがきれいなデジタル文書に変換します。\nどんな言語・字体でも対応。" },
+        hero: { title: "あなたの手書きメモ、\nもっときれいにできます。", subtitle: "メモの写真を撮るだけ。Mezmo Changeがきれいなデジタル文書に変換します。\nどんな言語・字体でも対応。" },
         upload: { heading: "📸 画像アップロード", cameraSupported: "カメラ対応", dropHere: "メモの写真をここにドロップ", orClickToBrowse: "またはクリックして選択", fileTypes: "JPG · PNG · HEIC", maxSize: "最大10MB", change: "変更", imageOnly: "画像ファイルのみ対応しています。", fileTooLarge: "ファイルサイズは10MB以下にしてください。" },
         analyze: { button: "✏️ AIで整理する", analyzing: "分析中...", error: "⚠️ エラー:" },
         stats: { avgTime: "~3秒", avgLabel: "平均分析時間", anyLang: "🌏", anyLangLabel: "全言語対応", export: "📤", exportLabel: "コピー · TXT · PDF" },
@@ -74,7 +74,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── 中文 ───
     zh: {
         nav: { noDataStored: "不存储数据", sslEncrypted: "SSL加密", upgrade: "升级" },
-        hero: { title: "你的手写笔记，\n值得更好的整理方式。", subtitle: "拍张照片，AI帮你把凌乱笔记变成清晰的数字文档。\n支持任何语言、任何字迹。" },
+        hero: { title: "你的手写笔记，\n值得更好的整理方式。", subtitle: "拍张照片，Mezmo Change帮你把凌乱笔记变成清晰的数字文档。\n支持任何语言、任何字迹。" },
         upload: { heading: "📸 上传图片", cameraSupported: "支持拍照", dropHere: "将笔记照片拖放到这里", orClickToBrowse: "或点击选择文件", fileTypes: "JPG · PNG · HEIC", maxSize: "最大10MB", change: "重新选择", imageOnly: "仅支持图片文件。", fileTooLarge: "文件大小不能超过10MB。" },
         analyze: { button: "✏️ AI智能整理", analyzing: "分析中...", error: "⚠️ 错误:" },
         stats: { avgTime: "~3秒", avgLabel: "平均分析", anyLang: "🌏", anyLangLabel: "全语言支持", export: "📤", exportLabel: "复制 · TXT · PDF" },
@@ -87,7 +87,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Español ───
     es: {
         nav: { noDataStored: "Sin almacenamiento", sslEncrypted: "SSL Cifrado", upgrade: "Mejorar" },
-        hero: { title: "Tu letra merece algo mejor\nque una foto borrosa.", subtitle: "Toma una foto de tus notas: nuestra IA las convierte en documentos limpios y organizados.\nFunciona con cualquier idioma y caligrafía." },
+        hero: { title: "Tu letra merece algo mejor\nque una foto borrosa.", subtitle: "Toma una foto de tus notas: Mezmo Change las convierte en documentos limpios y organizados.\nFunciona con cualquier idioma y caligrafía." },
         upload: { heading: "📸 Subir imagen", cameraSupported: "Cámara compatible", dropHere: "Arrastra tu foto de notas aquí", orClickToBrowse: "o haz clic para seleccionar", fileTypes: "JPG · PNG · HEIC", maxSize: "Máx. 10 MB", change: "Cambiar", imageOnly: "Solo se admiten archivos de imagen.", fileTooLarge: "El archivo debe ser menor de 10 MB." },
         analyze: { button: "✏️ Organizar con IA", analyzing: "Analizando...", error: "⚠️ Error:" },
         stats: { avgTime: "~3s", avgLabel: "Análisis prom.", anyLang: "🌏", anyLangLabel: "Cualquier idioma", export: "📤", exportLabel: "Copiar · TXT · PDF" },
@@ -100,7 +100,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Tiếng Việt ───
     vi: {
         nav: { noDataStored: "Không lưu dữ liệu", sslEncrypted: "Mã hóa SSL", upgrade: "Nâng cấp" },
-        hero: { title: "Chữ viết tay của bạn\nxứng đáng được số hóa.", subtitle: "Chụp ảnh ghi chú — AI sẽ chuyển đổi thành tài liệu số gọn gàng.\nHỗ trợ mọi ngôn ngữ, mọi nét chữ." },
+        hero: { title: "Chữ viết tay của bạn\nxứng đáng được số hóa.", subtitle: "Chụp ảnh ghi chú — Mezmo Change sẽ chuyển đổi thành tài liệu số gọn gàng.\nHỗ trợ mọi ngôn ngữ, mọi nét chữ." },
         upload: { heading: "📸 Tải ảnh lên", cameraSupported: "Hỗ trợ camera", dropHere: "Kéo thả ảnh ghi chú vào đây", orClickToBrowse: "hoặc nhấn để chọn tệp", fileTypes: "JPG · PNG · HEIC", maxSize: "Tối đa 10 MB", change: "Đổi ảnh", imageOnly: "Chỉ hỗ trợ tệp hình ảnh.", fileTooLarge: "Kích thước tệp phải dưới 10 MB." },
         analyze: { button: "✏️ Sắp xếp bằng AI", analyzing: "Đang phân tích...", error: "⚠️ Lỗi:" },
         stats: { avgTime: "~3s", avgLabel: "Thời gian TB", anyLang: "🌏", anyLangLabel: "Mọi ngôn ngữ", export: "📤", exportLabel: "Sao chép · TXT · PDF" },
@@ -113,7 +113,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── ภาษาไทย ───
     th: {
         nav: { noDataStored: "ไม่จัดเก็บข้อมูล", sslEncrypted: "เข้ารหัส SSL", upgrade: "อัปเกรด" },
-        hero: { title: "ลายมือของคุณ\nสมควรได้รับการจัดระเบียบ", subtitle: "ถ่ายรูปโน้ตของคุณ — AI จะแปลงเป็นเอกสารดิจิทัลที่เรียบร้อย\nรองรับทุกภาษา ทุกลายมือ" },
+        hero: { title: "ลายมือของคุณ\nสมควรได้รับการจัดระเบียบ", subtitle: "ถ่ายรูปโน้ตของคุณ — Mezmo Change จะแปลงเป็นเอกสารดิจิทัลที่เรียบร้อย\nรองรับทุกภาษา ทุกลายมือ" },
         upload: { heading: "📸 อัปโหลดรูปภาพ", cameraSupported: "รองรับกล้อง", dropHere: "ลากรูปโน้ตมาวางที่นี่", orClickToBrowse: "หรือคลิกเพื่อเลือกไฟล์", fileTypes: "JPG · PNG · HEIC", maxSize: "สูงสุด 10 MB", change: "เปลี่ยน", imageOnly: "รองรับเฉพาะไฟล์รูปภาพ", fileTooLarge: "ขนาดไฟล์ต้องไม่เกิน 10 MB" },
         analyze: { button: "✏️ จัดระเบียบด้วย AI", analyzing: "กำลังวิเคราะห์...", error: "⚠️ ข้อผิดพลาด:" },
         stats: { avgTime: "~3วิ", avgLabel: "เวลาเฉลี่ย", anyLang: "🌏", anyLangLabel: "ทุกภาษา", export: "📤", exportLabel: "คัดลอก · TXT · PDF" },
@@ -126,7 +126,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Deutsch (Schweiz) ───
     de: {
         nav: { noDataStored: "Keine Datenspeicherung", sslEncrypted: "SSL-verschlüsselt", upgrade: "Upgrade" },
-        hero: { title: "Ihre Handschrift verdient\nmehr als ein unscharfes Foto.", subtitle: "Fotografieren Sie Ihre Notizen — unsere KI verwandelt sie in saubere, strukturierte Dokumente.\nFunktioniert mit jeder Sprache und Handschrift." },
+        hero: { title: "Ihre Handschrift verdient\nmehr als ein unscharfes Foto.", subtitle: "Fotografieren Sie Ihre Notizen — Mezmo Change verwandelt sie in saubere, strukturierte Dokumente.\nFunktioniert mit jeder Sprache und Handschrift." },
         upload: { heading: "📸 Bild hochladen", cameraSupported: "Kamera unterstützt", dropHere: "Notiz-Foto hier ablegen", orClickToBrowse: "oder klicken zum Auswählen", fileTypes: "JPG · PNG · HEIC", maxSize: "Max. 10 MB", change: "Ändern", imageOnly: "Nur Bilddateien werden unterstützt.", fileTooLarge: "Dateigrösse darf 10 MB nicht überschreiten." },
         analyze: { button: "✏️ Mit KI organisieren", analyzing: "Analyse läuft...", error: "⚠️ Fehler:" },
         stats: { avgTime: "~3s", avgLabel: "Ø Analysezeit", anyLang: "🌏", anyLangLabel: "Jede Sprache", export: "📤", exportLabel: "Kopieren · TXT · PDF" },
@@ -139,7 +139,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Français ───
     fr: {
         nav: { noDataStored: "Aucune donnée stockée", sslEncrypted: "Chiffrement SSL", upgrade: "Améliorer" },
-        hero: { title: "Votre écriture mérite\nmieux qu'une photo floue.", subtitle: "Prenez une photo de vos notes — notre IA les transforme en documents clairs et structurés.\nFonctionne avec toutes les langues et écritures." },
+        hero: { title: "Votre écriture mérite\nmieux qu'une photo floue.", subtitle: "Prenez une photo de vos notes — Mezmo Change les transforme en documents clairs et structurés.\nFonctionne avec toutes les langues et écritures." },
         upload: { heading: "📸 Importer une image", cameraSupported: "Caméra supportée", dropHere: "Déposez votre photo de notes ici", orClickToBrowse: "ou cliquez pour parcourir", fileTypes: "JPG · PNG · HEIC", maxSize: "Max 10 Mo", change: "Changer", imageOnly: "Seuls les fichiers image sont acceptés.", fileTooLarge: "Le fichier doit faire moins de 10 Mo." },
         analyze: { button: "✏️ Organiser avec l'IA", analyzing: "Analyse en cours...", error: "⚠️ Erreur :" },
         stats: { avgTime: "~3s", avgLabel: "Analyse moy.", anyLang: "🌏", anyLangLabel: "Toute langue", export: "📤", exportLabel: "Copier · TXT · PDF" },
@@ -152,7 +152,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Português ───
     pt: {
         nav: { noDataStored: "Sem armazenamento", sslEncrypted: "Criptografia SSL", upgrade: "Upgrade" },
-        hero: { title: "Sua caligrafia merece\nalgo melhor que uma foto borrada.", subtitle: "Tire uma foto das suas anotações — nossa IA as transforma em documentos digitais organizados.\nFunciona com qualquer idioma e caligrafia." },
+        hero: { title: "Sua caligrafia merece\nalgo melhor que uma foto borrada.", subtitle: "Tire uma foto das suas anotações — Mezmo Change as transforma em documentos digitais organizados.\nFunciona com qualquer idioma e caligrafia." },
         upload: { heading: "📸 Enviar imagem", cameraSupported: "Câmera suportada", dropHere: "Arraste sua foto de anotações aqui", orClickToBrowse: "ou clique para selecionar", fileTypes: "JPG · PNG · HEIC", maxSize: "Máx. 10 MB", change: "Alterar", imageOnly: "Apenas arquivos de imagem são aceitos.", fileTooLarge: "O arquivo deve ter menos de 10 MB." },
         analyze: { button: "✏️ Organizar com IA", analyzing: "Analisando...", error: "⚠️ Erro:" },
         stats: { avgTime: "~3s", avgLabel: "Análise média", anyLang: "🌏", anyLangLabel: "Qualquer idioma", export: "📤", exportLabel: "Copiar · TXT · PDF" },
@@ -165,7 +165,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── العربية ───
     ar: {
         nav: { noDataStored: "لا يتم تخزين البيانات", sslEncrypted: "تشفير SSL", upgrade: "ترقية" },
-        hero: { title: "خطّك اليدوي يستحقّ\nأفضل من صورة ضبابية.", subtitle: "التقط صورة لملاحظاتك — ذكاؤنا الاصطناعي يحوّلها إلى مستندات رقمية منظّمة.\nيدعم جميع اللغات وأنماط الخط." },
+        hero: { title: "خطّك اليدوي يستحقّ\nأفضل من صورة ضبابية.", subtitle: "التقط صورة لملاحظاتك — Mezmo Change يحوّلها إلى مستندات رقمية منظّمة.\nيدعم جميع اللغات وأنماط الخط." },
         upload: { heading: "📸 رفع صورة", cameraSupported: "الكاميرا مدعومة", dropHere: "اسحب صورة الملاحظات هنا", orClickToBrowse: "أو انقر لاختيار ملف", fileTypes: "JPG · PNG · HEIC", maxSize: "الحد الأقصى 10 ميجا", change: "تغيير", imageOnly: "يُقبل فقط ملفات الصور.", fileTooLarge: "يجب ألا يتجاوز حجم الملف 10 ميجابايت." },
         analyze: { button: "✏️ تنظيم بالذكاء الاصطناعي", analyzing: "جارٍ التحليل...", error: "⚠️ خطأ:" },
         stats: { avgTime: "~3ث", avgLabel: "متوسط التحليل", anyLang: "🌏", anyLangLabel: "أي لغة", export: "📤", exportLabel: "نسخ · TXT · PDF" },
@@ -178,7 +178,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── हिन्दी ───
     hi: {
         nav: { noDataStored: "डेटा सहेजा नहीं जाता", sslEncrypted: "SSL एन्क्रिप्टेड", upgrade: "अपग्रेड" },
-        hero: { title: "आपकी हैंडराइटिंग\nबेहतर डिजिटल रूप की हकदार है।", subtitle: "अपने नोट्स की फ़ोटो लें — हमारा AI उन्हें साफ़, संरचित दस्तावेज़ में बदल देगा।\nकिसी भी भाषा, किसी भी लिखावट के साथ काम करता है।" },
+        hero: { title: "आपकी हैंडराइटिंग\nबेहतर डिजिटल रूप की हकदार है।", subtitle: "अपने नोट्स की फ़ोटो लें — Mezmo Change उन्हें साफ़, संरचित दस्तावेज़ में बदल देगा।\nकिसी भी भाषा, किसी भी लिखावट के साथ काम करता है।" },
         upload: { heading: "📸 चित्र अपलोड करें", cameraSupported: "कैमरा सपोर्टेड", dropHere: "नोट की फ़ोटो यहाँ ड्रॉप करें", orClickToBrowse: "या फ़ाइल चुनने के लिए क्लिक करें", fileTypes: "JPG · PNG · HEIC", maxSize: "अधिकतम 10 MB", change: "बदलें", imageOnly: "केवल इमेज फ़ाइलें स्वीकार्य हैं।", fileTooLarge: "फ़ाइल का आकार 10 MB से कम होना चाहिए।" },
         analyze: { button: "✏️ AI से व्यवस्थित करें", analyzing: "विश्लेषण हो रहा है...", error: "⚠️ त्रुटि:" },
         stats: { avgTime: "~3s", avgLabel: "औसत समय", anyLang: "🌏", anyLangLabel: "कोई भी भाषा", export: "📤", exportLabel: "कॉपी · TXT · PDF" },
@@ -191,7 +191,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Bahasa Indonesia ───
     id: {
         nav: { noDataStored: "Data tidak disimpan", sslEncrypted: "Enkripsi SSL", upgrade: "Upgrade" },
-        hero: { title: "Tulisan tangan Anda\nlayak mendapat yang lebih baik.", subtitle: "Foto catatan Anda — AI kami menyusunnya menjadi dokumen digital yang rapi.\nMendukung semua bahasa dan gaya tulisan." },
+        hero: { title: "Tulisan tangan Anda\nlayak mendapat yang lebih baik.", subtitle: "Foto catatan Anda — Mezmo Change menyusunnya menjadi dokumen digital yang rapi.\nMendukung semua bahasa dan gaya tulisan." },
         upload: { heading: "📸 Unggah Gambar", cameraSupported: "Kamera didukung", dropHere: "Seret foto catatan ke sini", orClickToBrowse: "atau klik untuk memilih file", fileTypes: "JPG · PNG · HEIC", maxSize: "Maks 10 MB", change: "Ganti", imageOnly: "Hanya file gambar yang didukung.", fileTooLarge: "Ukuran file harus di bawah 10 MB." },
         analyze: { button: "✏️ Rapikan dengan AI", analyzing: "Menganalisis...", error: "⚠️ Kesalahan:" },
         stats: { avgTime: "~3d", avgLabel: "Waktu rata-rata", anyLang: "🌏", anyLangLabel: "Semua bahasa", export: "📤", exportLabel: "Salin · TXT · PDF" },
@@ -204,7 +204,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Русский ───
     ru: {
         nav: { noDataStored: "Данные не сохраняются", sslEncrypted: "SSL-шифрование", upgrade: "Улучшить" },
-        hero: { title: "Ваш почерк заслуживает\nбольшего, чем размытое фото.", subtitle: "Сфотографируйте заметки — наш ИИ превратит их в чистые, структурированные документы.\nРаботает с любым языком и почерком." },
+        hero: { title: "Ваш почерк заслуживает\nбольшего, чем размытое фото.", subtitle: "Сфотографируйте заметки — Mezmo Change превратит их в чистые, структурированные документы.\nРаботает с любым языком и почерком." },
         upload: { heading: "📸 Загрузить изображение", cameraSupported: "Камера поддерживается", dropHere: "Перетащите фото заметки сюда", orClickToBrowse: "или нажмите для выбора файла", fileTypes: "JPG · PNG · HEIC", maxSize: "Макс. 10 МБ", change: "Изменить", imageOnly: "Поддерживаются только файлы изображений.", fileTooLarge: "Размер файла не должен превышать 10 МБ." },
         analyze: { button: "✏️ Организовать с ИИ", analyzing: "Анализ...", error: "⚠️ Ошибка:" },
         stats: { avgTime: "~3с", avgLabel: "Среднее время", anyLang: "🌏", anyLangLabel: "Любой язык", export: "📤", exportLabel: "Копировать · TXT · PDF" },
@@ -217,7 +217,7 @@ export const translations: Record<Locale, Translations> = {
     // ─── Türkçe ───
     tr: {
         nav: { noDataStored: "Veri saklanmaz", sslEncrypted: "SSL Şifreli", upgrade: "Yükselt" },
-        hero: { title: "El yazınız bulanık bir\nfotoğraftan fazlasını hak ediyor.", subtitle: "Notlarınızın fotoğrafını çekin — yapay zekamız onları temiz, düzenli belgelere dönüştürür.\nHer dil ve her el yazısıyla çalışır." },
+        hero: { title: "El yazınız bulanık bir\nfotoğraftan fazlasını hak ediyor.", subtitle: "Notlarınızın fotoğrafını çekin — Mezmo Change onları temiz, düzenli belgelere dönüştürür.\nHer dil ve her el yazısıyla çalışır." },
         upload: { heading: "📸 Görsel Yükle", cameraSupported: "Kamera desteklenir", dropHere: "Not fotoğrafınızı buraya bırakın", orClickToBrowse: "veya dosya seçmek için tıklayın", fileTypes: "JPG · PNG · HEIC", maxSize: "Maks. 10 MB", change: "Değiştir", imageOnly: "Yalnızca görsel dosyaları desteklenir.", fileTooLarge: "Dosya boyutu 10 MB'tan küçük olmalıdır." },
         analyze: { button: "✏️ Yapay Zeka ile Düzenle", analyzing: "Analiz ediliyor...", error: "⚠️ Hata:" },
         stats: { avgTime: "~3sn", avgLabel: "Ort. analiz", anyLang: "🌏", anyLangLabel: "Her dil", export: "📤", exportLabel: "Kopyala · TXT · PDF" },
