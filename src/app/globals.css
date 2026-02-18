@@ -32,7 +32,7 @@
   --color-silver-100: var(--silver-100);
   --color-silver-200: var(--silver-200);
   --color-silver-300: var(--silver-300);
-  --font-sans: var(--font-inter), -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", sans-serif;
+  --font-sans: -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans KR", "Noto Sans JP", "Noto Sans SC", sans-serif;
 }
 
 /* ==============================
