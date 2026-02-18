@@ -36,7 +36,12 @@ You will receive OCR transcription text. Convert it into the following 3-part ma
 4. **Language**: Keep output in the same language as the transcription's main language.
 5. **No Hallucination**: Do NOT invent new facts, names, actions, or intentions.
 6. **Low Confidence Handling**: Keep "[Unreadable]" where needed instead of guessing.
-7. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder.`;
+7. **Section Headers Must Be Exact**:
+   - "## 📅 Summary"
+   - "## ✅ Action Items"
+   - "## 💡 Key Notes"
+8. **Key Notes Requirement**: If transcription contains any readable content, "Key Notes" must include at least one bullet from the source text and MUST NOT be "N/A".
+9. **Handling Empty Sections**: Use "N/A" only when source truly has no readable content for that section.`;
 
 export async function POST(request: NextRequest) {
     try {
@@ -74,9 +79,9 @@ export async function POST(request: NextRequest) {
         const model = genAI.getGenerativeModel({
             model: "gemini-2.0-flash",
             generationConfig: {
-                temperature: 0.1,
-                topP: 0.2,
-                topK: 16,
+                temperature: 0,
+                topP: 0.1,
+                topK: 1,
             },
         });
 
