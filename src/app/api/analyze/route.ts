@@ -29,6 +29,24 @@ Analyze the handwritten image provided and output the content strictly in the fo
 6. **Low Confidence Handling**: If any part is hard to read, mark it as "[Unreadable]" (or localized equivalent) instead of guessing.
 7. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder (e.g., "No action items" / "실행할 항목 없음").`;
 
+const LOCALE_HINT: Record<string, string> = {
+    en: "English",
+    ko: "Korean",
+    ja: "Japanese",
+    zh: "Chinese",
+    es: "Spanish",
+    vi: "Vietnamese",
+    th: "Thai",
+    de: "German",
+    fr: "French",
+    pt: "Portuguese",
+    ar: "Arabic",
+    hi: "Hindi",
+    id: "Indonesian",
+    ru: "Russian",
+    tr: "Turkish",
+};
+
 export async function POST(request: NextRequest) {
     try {
         const apiKey = process.env.GEMINI_API_KEY;
@@ -41,6 +59,9 @@ export async function POST(request: NextRequest) {
 
         const formData = await request.formData();
         const file = formData.get("image") as File | null;
+        const localeHintRaw = formData.get("localeHint");
+        const localeHintKey = typeof localeHintRaw === "string" ? localeHintRaw.toLowerCase() : "";
+        const localeHint = LOCALE_HINT[localeHintKey];
 
         if (!file) {
             return NextResponse.json(
@@ -72,8 +93,14 @@ export async function POST(request: NextRequest) {
             },
         });
 
+        const localeBiasInstruction = localeHint
+            ? `\n\nUI locale hint: ${localeHint}.
+If handwriting is ambiguous, bias character/script interpretation toward ${localeHint}.
+Do not translate clearly recognized original text; only use this hint for disambiguation.`
+            : "";
+
         const result = await model.generateContent([
-            PROMPT,
+            `${PROMPT}${localeBiasInstruction}`,
             {
                 inlineData: {
                     data: base64,
