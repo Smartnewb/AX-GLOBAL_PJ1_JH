@@ -43,6 +43,24 @@ You will receive OCR transcription text. Convert it into the following 3-part ma
 8. **Key Notes Requirement**: If transcription contains any readable content, "Key Notes" must include at least one bullet from the source text and MUST NOT be "N/A".
 9. **Handling Empty Sections**: Use "N/A" only when source truly has no readable content for that section.`;
 
+const OUTPUT_LANGUAGE: Record<string, string> = {
+    en: "English",
+    ko: "Korean",
+    ja: "Japanese",
+    zh: "Chinese",
+    es: "Spanish",
+    vi: "Vietnamese",
+    th: "Thai",
+    de: "German",
+    fr: "French",
+    pt: "Portuguese",
+    ar: "Arabic",
+    hi: "Hindi",
+    id: "Indonesian",
+    ru: "Russian",
+    tr: "Turkish",
+};
+
 export async function POST(request: NextRequest) {
     try {
         const apiKey = process.env.GEMINI_API_KEY;
@@ -55,6 +73,9 @@ export async function POST(request: NextRequest) {
 
         const formData = await request.formData();
         const file = formData.get("image") as File | null;
+        const outputLocaleRaw = formData.get("outputLocale");
+        const outputLocaleKey = typeof outputLocaleRaw === "string" ? outputLocaleRaw.toLowerCase() : "";
+        const outputLanguage = OUTPUT_LANGUAGE[outputLocaleKey];
         if (!file) {
             return NextResponse.json(
                 { error: "An image file is required." },
@@ -104,8 +125,12 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        const outputLanguageInstruction = outputLanguage
+            ? `\n\nOutput language requirement: Write the final sections in ${outputLanguage}.`
+            : "";
+
         const structuredResult = await model.generateContent([
-            STRUCTURE_PROMPT,
+            `${STRUCTURE_PROMPT}${outputLanguageInstruction}`,
             `OCR Transcription:\n${transcription}`,
         ]);
 
