@@ -12,7 +12,7 @@ Analyze the handwritten image provided and output the content strictly in the fo
 ( concisely summarize the core message of the note in 1-2 sentences. )
 
 ## ✅ Action Items
-( List any tasks, to-dos, or next steps found in the note. If none are explicit, infer logical next steps based on the context. )
+( List only tasks, to-dos, or next steps that are explicitly written in the note. If none are explicit, write a brief placeholder such as "No action items" / "실행할 항목 없음". )
 
 ## 💡 Key Notes
 ( Organize the remaining details, ideas, and context into bullet points. )
@@ -25,7 +25,9 @@ Analyze the handwritten image provided and output the content strictly in the fo
    - If Korean -> Korean response.
    - If English -> English response.
    - If mixed -> Preserve the primary language of each section.
-5. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder (e.g., "No action items" / "실행할 항목 없음").`;
+5. **No Hallucination**: Do NOT invent new facts, names, actions, or intentions that are not present in the handwriting.
+6. **Low Confidence Handling**: If any part is hard to read, mark it as "[Unreadable]" (or localized equivalent) instead of guessing.
+7. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder (e.g., "No action items" / "실행할 항목 없음").`;
 
 export async function POST(request: NextRequest) {
     try {
@@ -61,7 +63,14 @@ export async function POST(request: NextRequest) {
 
         // Call Gemini API
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const model = genAI.getGenerativeModel({
+            model: "gemini-2.0-flash",
+            generationConfig: {
+                temperature: 0.1,
+                topP: 0.2,
+                topK: 16,
+            },
+        });
 
         const result = await model.generateContent([
             PROMPT,
