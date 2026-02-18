@@ -76,7 +76,7 @@ export default function UploadZone({ file, preview, onFileSelect, onClear, disab
                     <span>{t.upload.fileTypes}</span><span>·</span><span>{t.upload.maxSize}</span>
                 </div>
             </div>
-            <input ref={inputRef} type="file" accept="image/*" capture="environment" onChange={onInputChange} className="hidden" />
+            <input ref={inputRef} type="file" accept="image/*" onChange={onInputChange} className="hidden" />
         </div>
     );
 }
