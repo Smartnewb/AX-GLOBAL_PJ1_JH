@@ -3,49 +3,40 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export const runtime = "nodejs";
 
-const PROMPT = `You are "Mezmo Change", an expert AI assistant that transforms messy handwriting into structured, actionable digital assets.
+const TRANSCRIBE_PROMPT = `You are a strict OCR transcription engine.
+
+Task:
+- Read the handwriting in the image and transcribe it as faithfully as possible.
+
+Rules:
+1. Preserve original language/script and line order.
+2. Do NOT translate, summarize, infer, or clean up content.
+3. Do NOT add words not present in the image.
+4. If a token is unclear, use "[Unreadable]".
+5. Return plain text only (no markdown, no commentary).`;
+
+const STRUCTURE_PROMPT = `You are "Mezmo Change", an expert AI assistant that transforms messy handwriting into structured, actionable digital assets.
 Your goal is to "Change" scribbles into smart notes in seconds.
 
-Analyze the handwritten image provided and output the content strictly in the following 3-part markdown format:
+You will receive OCR transcription text. Convert it into the following 3-part markdown format:
 
 ## 📅 Summary
-( concisely summarize the core message of the note in 1-2 sentences. )
+( concisely summarize the core message in 1-2 sentences. )
 
 ## ✅ Action Items
-( List only tasks, to-dos, or next steps that are explicitly written in the note. If none are explicit, write a brief placeholder such as "No action items" / "실행할 항목 없음". )
+( List only tasks explicitly present in the transcription. If none, use a short placeholder like "No action items" / "실행할 항목 없음". )
 
 ## 💡 Key Notes
-( Organize the remaining details, ideas, and context into bullet points. )
+( Organize remaining details into concise bullet points. )
 
 **Rules:**
-1. **Correction**: Fix spelling errors and clarify ambiguous handwriting based on context.
-2. **De-clutter**: Remove filler words ("um", "uh"), doodles, and irrelevant marks.
+1. **Source of Truth**: Use only the provided transcription text.
+2. **Correction**: You may correct obvious OCR typos if context is clear.
 3. **Format**: Use **Bold** for important terms. Use bullet points for readability.
-4. **Language**: Respond in the SAME LANGUAGE as the handwritten notes.
-   - If Korean -> Korean response.
-   - If English -> English response.
-   - If mixed -> Preserve the primary language of each section.
-5. **No Hallucination**: Do NOT invent new facts, names, actions, or intentions that are not present in the handwriting.
-6. **Low Confidence Handling**: If any part is hard to read, mark it as "[Unreadable]" (or localized equivalent) instead of guessing.
-7. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder (e.g., "No action items" / "실행할 항목 없음").`;
-
-const LOCALE_HINT: Record<string, string> = {
-    en: "English",
-    ko: "Korean",
-    ja: "Japanese",
-    zh: "Chinese",
-    es: "Spanish",
-    vi: "Vietnamese",
-    th: "Thai",
-    de: "German",
-    fr: "French",
-    pt: "Portuguese",
-    ar: "Arabic",
-    hi: "Hindi",
-    id: "Indonesian",
-    ru: "Russian",
-    tr: "Turkish",
-};
+4. **Language**: Keep output in the same language as the transcription's main language.
+5. **No Hallucination**: Do NOT invent new facts, names, actions, or intentions.
+6. **Low Confidence Handling**: Keep "[Unreadable]" where needed instead of guessing.
+7. **Handling Empty Sections**: If a section has no content, write "N/A" or a brief culturally appropriate placeholder.`;
 
 export async function POST(request: NextRequest) {
     try {
@@ -59,10 +50,6 @@ export async function POST(request: NextRequest) {
 
         const formData = await request.formData();
         const file = formData.get("image") as File | null;
-        const localeHintRaw = formData.get("localeHint");
-        const localeHintKey = typeof localeHintRaw === "string" ? localeHintRaw.toLowerCase() : "";
-        const localeHint = LOCALE_HINT[localeHintKey];
-
         if (!file) {
             return NextResponse.json(
                 { error: "An image file is required." },
@@ -93,14 +80,8 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        const localeBiasInstruction = localeHint
-            ? `\n\nUI locale hint: ${localeHint}.
-If handwriting is ambiguous, bias character/script interpretation toward ${localeHint}.
-Do not translate clearly recognized original text; only use this hint for disambiguation.`
-            : "";
-
-        const result = await model.generateContent([
-            `${PROMPT}${localeBiasInstruction}`,
+        const ocrResult = await model.generateContent([
+            TRANSCRIBE_PROMPT,
             {
                 inlineData: {
                     data: base64,
@@ -109,17 +90,29 @@ Do not translate clearly recognized original text; only use this hint for disamb
             },
         ]);
 
-        const response = result.response;
-        const text = response.text();
+        const transcription = ocrResult.response.text().trim();
 
-        if (!text) {
+        if (!transcription) {
             return NextResponse.json(
-                { error: "No response received from AI." },
+                { error: "No transcription received from AI." },
                 { status: 500 }
             );
         }
 
-        return NextResponse.json({ result: text });
+        const structuredResult = await model.generateContent([
+            STRUCTURE_PROMPT,
+            `OCR Transcription:\n${transcription}`,
+        ]);
+
+        const finalText = structuredResult.response.text().trim();
+        if (!finalText) {
+            return NextResponse.json(
+                { error: "No structured response received from AI." },
+                { status: 500 }
+            );
+        }
+
+        return NextResponse.json({ result: finalText });
     } catch (error: unknown) {
         console.error("Gemini API error:", error);
 

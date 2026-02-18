@@ -10,7 +10,7 @@ import { canScan, recordScan, getRemainingScans } from "@/lib/usageLimit";
 type Status = "idle" | "uploaded" | "loading" | "done" | "error";
 
 export default function Home() {
-  const { t, locale } = useLocale();
+  const { t } = useLocale();
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>("idle");
@@ -37,7 +37,6 @@ export default function Home() {
     try {
       const formData = new FormData();
       formData.append("image", file);
-      formData.append("localeHint", locale);
       const res = await fetch("/api/analyze", { method: "POST", body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Conversion failed.");
@@ -48,7 +47,7 @@ export default function Home() {
       const msg = err instanceof Error ? err.message : "An unexpected error occurred.";
       setError(msg); setStatus("error");
     }
-  }, [file, locale]);
+  }, [file]);
 
   return (
     <div className="relative min-h-screen">
